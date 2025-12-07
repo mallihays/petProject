@@ -1,36 +1,26 @@
-// ============================================================================
-// DATABASE MANAGER (Single Responsibility Principle)
-// ============================================================================
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Manages all database operations
- * Single Responsibility: Only handles database CRUD operations
- */
 class DatabaseManager {
     private static final String DB_URL = "jdbc:sqlite:virtual_pet.db";
     private Connection connection;
 
-    public DatabaseManager() {
-        initializeDatabase();
-    }
+//    public DatabaseManager() {
+//        initializeDatabase();
+//    }
+//    private void initializeDatabase() {
+//        try {
+//            Class.forName("org.sqlite.JDBC");
+//            connection = DriverManager.getConnection(DB_URL);
+//            createTables();
+//            System.out.println("✅ Database initialized successfully!");
+//        } catch (ClassNotFoundException | SQLException e) {
+//            System.err.println("❌ Database initialization error: " + e.getMessage());
+//        }
+//    }
 
-    private void initializeDatabase() {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection(DB_URL);
-            createTables();
-            System.out.println("✅ Database initialized successfully!");
-        } catch (ClassNotFoundException | SQLException e) {
-            System.err.println("❌ Database initialization error: " + e.getMessage());
-        }
-    }
-
-    private void createTables() {
+   /* private void createTables() {
         String createPetsTable = """
             CREATE TABLE IF NOT EXISTS pets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,7 +37,6 @@ class DatabaseManager {
                 last_played TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """;
-
         String createGameHistoryTable = """
             CREATE TABLE IF NOT EXISTS game_history (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -81,7 +70,7 @@ class DatabaseManager {
             System.err.println("❌ Error creating tables: " + e.getMessage());
         }
     }
-
+*/
     public int savePet(IPet pet) {
         String sql = """
             INSERT INTO pets (name, type, health, max_health, energy, hunger, happiness, state, decorators)
