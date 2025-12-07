@@ -1,13 +1,7 @@
 abstract class Pet implements IPet {
-    protected String name;
-    protected int health;
-    protected int energy;
-    protected int hunger;
-    protected int happiness;
+    protected String name,decorators = "";
+    protected int health,energy,hunger,happiness,maxHealth, petId=-1;
     protected IPetState currentState;
-    protected int maxHealth;
-    protected int petId = -1;
-    protected String decorators = "";
 
     protected Pet(String name, int health, int energy, int hunger, int happiness) {
         this.name = name;
@@ -21,33 +15,26 @@ abstract class Pet implements IPet {
 
     @Override
     public String getName() { return name; }
-
     @Override
     public int getHealth() { return health; }
-
     @Override
     public int getEnergy() { return energy; }
-
     @Override
     public int getHunger() { return hunger; }
-
     @Override
     public int getHappiness() { return happiness; }
-
     @Override
     public int getMaxHealth() { return maxHealth; }
-
     @Override
     public int getPetId() { return petId; }
-
     @Override
     public void setPetId(int id) { this.petId = id; }
-
     @Override
     public String getDecorators() { return decorators; }
-
     @Override
-    public void setDecorators(String decorators) { this.decorators = decorators; }
+    public void setDecorators(String decorators) {
+        this.decorators = decorators;
+    }
 
     @Override
     public void setHealth(int health) {
