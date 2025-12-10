@@ -16,25 +16,25 @@ class PetBuilder {
         return this;
     }
 
-    public PetBuilder setHealth(int health) {
-        this.health = health;
-        return this;
-    }
-
-    public PetBuilder setEnergy(int energy) {
-        this.energy = energy;
-        return this;
-    }
-
-    public PetBuilder setHunger(int hunger) {
-        this.hunger = hunger;
-        return this;
-    }
-
-    public PetBuilder setHappiness(int happiness) {
-        this.happiness = happiness;
-        return this;
-    }
+//    public PetBuilder setHealth(int health) {
+//        this.health = health;
+//        return this;
+//    }
+//
+//    public PetBuilder setEnergy(int energy) {
+//        this.energy = energy;
+//        return this;
+//    }
+//
+//    public PetBuilder setHunger(int hunger) {
+//        this.hunger = hunger;
+//        return this;
+//    }
+//
+//    public PetBuilder setHappiness(int happiness) {
+//        this.happiness = happiness;
+//        return this;
+//    }
 
     public IPet build() {
         if (type.equals("dragon")) {
