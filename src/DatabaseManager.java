@@ -6,21 +6,21 @@ class DatabaseManager {
     private static final String DB_URL = "jdbc:sqlite:virtual_pet.db";
     private Connection connection;
 
-//    public DatabaseManager() {
-//        initializeDatabase();
-//    }
-//    private void initializeDatabase() {
-//        try {
-//            Class.forName("org.sqlite.JDBC");
-//            connection = DriverManager.getConnection(DB_URL);
-//            createTables();
-//            System.out.println("✅ Database initialized successfully!");
-//        } catch (ClassNotFoundException | SQLException e) {
-//            System.err.println("❌ Database initialization error: " + e.getMessage());
-//        }
-//    }
+    public DatabaseManager() {
+        initializeDatabase();
+    }
+    private void initializeDatabase() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(DB_URL);
+            createTables();
+            System.out.println("✅ Database initialized successfully!");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("❌ Database initialization error: " + e.getMessage());
+        }
+    }
 
-   /* private void createTables() {
+    private void createTables() {
         String createPetsTable = """
             CREATE TABLE IF NOT EXISTS pets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,7 +70,7 @@ class DatabaseManager {
             System.err.println("❌ Error creating tables: " + e.getMessage());
         }
     }
-*/
+
     public int savePet(IPet pet) {
         String sql = """
             INSERT INTO pets (name, type, health, max_health, energy, hunger, happiness, state, decorators)
@@ -228,9 +228,9 @@ class DatabaseManager {
 
     private IPetState getStateFromName(String stateName) {
         return switch (stateName) {
-            case "😊 Happy" -> new HappyState();
-            case "😠 Hungry" -> new HungryState();
-            case "😴 Sleeping" -> new SleepingState();
+            case "◝(ᵔᗜᵔ)◜Happy" -> new HappyState();
+            case "( •̀ ᴖ •́ )Hungry" -> new HungryState();
+            case "(ᴗ_ ᴗ。)Sleeping" -> new SleepingState();
             case "💀 Dead" -> new DeadState();
             default -> new NormalState();
         };

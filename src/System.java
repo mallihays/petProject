@@ -27,7 +27,7 @@ class GameEngine {
         scanner.close();
     }
 
-    private void mainMenu() {
+    public void mainMenu() {
         while (true) {
             System.out.println("\n🏠 MAIN MENU:");
             System.out.println("1. 🆕 Create New Pet");
@@ -57,7 +57,7 @@ class GameEngine {
                     running = false;
                     return;
                 default:
-                    System.out.println("❌ Invalid choice!");
+                    System.out.println("Invalid choice!!!");
             }
         }
     }
@@ -77,14 +77,13 @@ class GameEngine {
             builder.setType("cat");
         }
 
-        System.out.print("\n📝 Enter pet name: ");
+        System.out.print("\nEnter pet name: ");
         String name = scanner.nextLine();
         builder.setName(name.isEmpty() ? "Buddy" : name);
 
         currentPet = builder.build();
         System.out.println("\n✅ " + currentPet.getType() + " " + currentPet.getName() + " has been created!");
 
-        // Save to database
         dbManager.savePet(currentPet);
     }
 
@@ -92,7 +91,7 @@ class GameEngine {
         List<String> pets = dbManager.getSavedPets();
 
         if (pets.isEmpty()) {
-            System.out.println("❌ No saved pets found!");
+            System.out.println(" (╥‸╥) No saved pets found!");
             return;
         }
 
@@ -114,7 +113,7 @@ class GameEngine {
                 }
             }
         } catch (NumberFormatException e) {
-            System.out.println("❌ Invalid input!");
+            System.out.println("(╥‸╥) Invalid input!");
         }
     }
 
@@ -122,7 +121,7 @@ class GameEngine {
         List<String> pets = dbManager.getSavedPets();
 
         if (pets.isEmpty()) {
-            System.out.println("\n❌ No saved pets found!");
+            System.out.println("\n (╥‸╥) No saved pets found!");
         } else {
             System.out.println("\n📂 ALL SAVED PETS:");
             for (int i = 0; i < pets.size(); i++) {

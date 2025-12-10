@@ -61,8 +61,12 @@ abstract class Pet implements IPet {
 
     @Override
     public void setState(IPetState state) {
-        this.currentState = state;
-        System.out.println("🔄 " + name + " is now " + state.getStateName());
+        if (this.currentState == null || !this.currentState.getClass().equals(state.getClass())) {
+            this.currentState = state;
+            System.out.println("🔄 " + name + " is now " + state.getStateName());
+        } else {
+            this.currentState = state;
+        }
     }
 
     @Override
