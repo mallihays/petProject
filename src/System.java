@@ -168,7 +168,7 @@ class GameEngine {
             handleInput();
             currentPet.tick();
 
-            // Update database after each action
+
             dbManager.updatePet(currentPet);
             dbManager.updateStatistics(currentPet.getPetId(), "TICK");
 

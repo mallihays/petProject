@@ -44,17 +44,6 @@ class PetBuilder {
         }
     }
 }
-//SOLID Principles:
 //✅ Single Responsibility
-//
 //Builder ONLY constructs pets
 //Doesn't handle game logic or display
-//
-//✅ Open/Closed
-//
-//Can add new pet types by modifying build()
-//Could refactor to make truly extensible with registry
-//
-//✅ Dependency Inversion
-//
-//Returns IPet interface, not concrete class
