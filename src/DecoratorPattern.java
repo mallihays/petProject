@@ -49,7 +49,8 @@ abstract class PetDecorator implements IPet {
 
     @Override
     public void setState(IPetState state) { wrappedPet.setState(state); }
-
+//State Pattern - allows dynamic behavior changes
+//Pet behavior controlled by current state object
     @Override
     public IPetState getState() { return wrappedPet.getState(); }
 

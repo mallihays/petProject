@@ -6,9 +6,7 @@ interface IPetState {
     String getStateName();
 }
 class HappyState implements IPetState {
-
     public String getStateName() { return "◝(ᵔᗜᵔ)◜Happy"; }
-
 
     public void handleFeed(IPet pet) {
         System.out.println("✅ " + pet.getName() + " enjoys the meal!");
@@ -16,7 +14,6 @@ class HappyState implements IPetState {
         pet.setHappiness(Math.min(100, pet.getHappiness() + 10));
         ((Pet)pet).updateState();
     }
-
     public void handlePlay(IPet pet) {
         System.out.println("✅ " + pet.getName() + " plays joyfully!");
         pet.setHappiness(Math.min(100, pet.getHappiness() + 20));
@@ -24,14 +21,10 @@ class HappyState implements IPetState {
         pet.setHunger(Math.min(100, pet.getHunger() + 10));
         ((Pet)pet).updateState();
     }
-
-
     public void handleSleep(IPet pet) {
         System.out.println("✅ " + pet.getName() + " takes a nap...");
         pet.setState(new SleepingState());
     }
-
-
     public void handleTick(IPet pet) {
         pet.setEnergy(Math.max(0, pet.getEnergy() - 5));
         pet.setHunger(Math.min(100, pet.getHunger() + 8));
@@ -41,9 +34,7 @@ class HappyState implements IPetState {
 }
 
 class NormalState implements IPetState {
-
     public String getStateName() { return "(ㆆ_ㆆ)Normal"; }
-
 
     public void handleFeed(IPet pet) {
         System.out.println("✅ " + pet.getName() + " eats the food.");
@@ -51,8 +42,6 @@ class NormalState implements IPetState {
         pet.setHappiness(Math.min(100, pet.getHappiness() + 5));
         ((Pet)pet).updateState();
     }
-
-
     public void handlePlay(IPet pet) {
         System.out.println("✅ " + pet.getName() + " plays a bit.");
         pet.setHappiness(Math.min(100, pet.getHappiness() + 15));
@@ -60,14 +49,10 @@ class NormalState implements IPetState {
         pet.setHunger(Math.min(100, pet.getHunger() + 10));
         ((Pet)pet).updateState();
     }
-
-
     public void handleSleep(IPet pet) {
         System.out.println("✅ " + pet.getName() + " goes to sleep...");
         pet.setState(new SleepingState());
     }
-
-
     public void handleTick(IPet pet) {
         pet.setEnergy(Math.max(0, pet.getEnergy() - 5));
         pet.setHunger(Math.min(100, pet.getHunger() + 10));
@@ -77,9 +62,7 @@ class NormalState implements IPetState {
 }
 
 class HungryState implements IPetState {
-
     public String getStateName() { return "( •̀ ᴖ •́ )Hungry"; }
-
 
     public void handleFeed(IPet pet) {
         System.out.println("✅ " + pet.getName() + " devours the food hungrily!");
@@ -87,18 +70,12 @@ class HungryState implements IPetState {
         pet.setHappiness(Math.min(100, pet.getHappiness() + 15));
         ((Pet)pet).updateState();
     }
-
-
     public void handlePlay(IPet pet) {
         System.out.println("❌ " + pet.getName() + " is too hungry to play!");
     }
-
-
     public void handleSleep(IPet pet) {
         System.out.println("❌ " + pet.getName() + " can't sleep when hungry!");
     }
-
-
     public void handleTick(IPet pet) {
         pet.setEnergy(Math.max(0, pet.getEnergy() - 8));
         pet.setHunger(Math.min(100, pet.getHunger() + 12));
@@ -110,26 +87,20 @@ class HungryState implements IPetState {
 
 class SleepingState implements IPetState {
     private int sleepTurns = 0;
-
-
     public String getStateName() { return "(ᴗ_ ᴗ。)Sleeping"; }
-
 
     public void handleFeed(IPet pet) {
         System.out.println("❌ " + pet.getName() + " is sleeping! Wake them up first.");
     }
-
 
     public void handlePlay(IPet pet) {
         System.out.println("💤 " + pet.getName() + " wakes up!");
         pet.setState(new NormalState());
     }
 
-
     public void handleSleep(IPet pet) {
         System.out.println("💤 " + pet.getName() + " is already sleeping...");
     }
-
 
     public void handleTick(IPet pet) {
         sleepTurns++;
@@ -142,26 +113,18 @@ class SleepingState implements IPetState {
         }
     }
 }
-
 class DeadState implements IPetState {
-
     public String getStateName() { return "💀 Dead"; }
-
 
     public void handleFeed(IPet pet) {
         System.out.println("💀 " + pet.getName() + " has passed away...");
     }
-
-
     public void handlePlay(IPet pet) {
         System.out.println("💀 " + pet.getName() + " has passed away...");
     }
-
-
     public void handleSleep(IPet pet) {
         System.out.println("💀 " + pet.getName() + " has passed away...");
     }
-
     public void handleTick(IPet pet) {
         // Dead pets don't tick
     }

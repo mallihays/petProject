@@ -16,25 +16,25 @@ class PetBuilder {
         return this;
     }
 
-    public PetBuilder setHealth(int health) {
-        this.health = health;
-        return this;
-    }
-
-    public PetBuilder setEnergy(int energy) {
-        this.energy = energy;
-        return this;
-    }
-
-    public PetBuilder setHunger(int hunger) {
-        this.hunger = hunger;
-        return this;
-    }
-
-    public PetBuilder setHappiness(int happiness) {
-        this.happiness = happiness;
-        return this;
-    }
+//    public PetBuilder setHealth(int health) {
+//        this.health = health;
+//        return this;
+//    }
+//
+//    public PetBuilder setEnergy(int energy) {
+//        this.energy = energy;
+//        return this;
+//    }
+//
+//    public PetBuilder setHunger(int hunger) {
+//        this.hunger = hunger;
+//        return this;
+//    }
+//
+//    public PetBuilder setHappiness(int happiness) {
+//        this.happiness = happiness;
+//        return this;
+//    }
 
     public IPet build() {
         if (type.equals("dragon")) {
@@ -44,3 +44,17 @@ class PetBuilder {
         }
     }
 }
+//SOLID Principles:
+//✅ Single Responsibility
+//
+//Builder ONLY constructs pets
+//Doesn't handle game logic or display
+//
+//✅ Open/Closed
+//
+//Can add new pet types by modifying build()
+//Could refactor to make truly extensible with registry
+//
+//✅ Dependency Inversion
+//
+//Returns IPet interface, not concrete class

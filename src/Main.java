@@ -4,3 +4,5 @@ public class Main {
         game.start();
     }
 }
+//✅ Single Responsibility - Main only starts the application
+//✅ Dependency Inversion - Depends on GameEngine abstraction

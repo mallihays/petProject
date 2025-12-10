@@ -2,6 +2,7 @@ abstract class Pet implements IPet {
     protected String name,decorators = "";
     protected int health,energy,hunger,happiness,maxHealth, petId=-1;
     protected IPetState currentState;
+    //State Pattern - current behavior state.Polymorphism - holds any IPetState implementation
 
     protected Pet(String name, int health, int energy, int hunger, int happiness) {
         this.name = name;
@@ -10,7 +11,7 @@ abstract class Pet implements IPet {
         this.energy = energy;
         this.hunger = hunger;
         this.happiness = happiness;
-        this.currentState = new HappyState();
+        this.currentState = new HappyState(); //Default state - all pets start happy .State Pattern initialization
     }
 
     @Override
@@ -38,7 +39,7 @@ abstract class Pet implements IPet {
 
     @Override
     public void setHealth(int health) {
-        this.health = Math.max(0, Math.min(maxHealth, health));
+        this.health = Math.max(0, Math.min(maxHealth, health)); //health stays in range [0, maxHealth]
     }
 
     @Override
@@ -107,3 +108,23 @@ abstract class Pet implements IPet {
         }
     }
 }
+
+//✅ Single Responsibility
+//
+//Pet manages its own data and basic operations
+//Doesn't handle UI, database, or game loop
+//
+//✅ Open/Closed
+//
+//Open for extension (subclass for new pet types)
+//Closed for modification (core logic stable)
+//
+//✅ Liskov Substitution
+//
+//Cat and Dragon can replace Pet anywhere
+//No unexpected behavior differences
+//
+//✅ Dependency Inversion
+//
+//Depends on IPetState interface, not concrete states
+//Can add new states without changing Pet class
