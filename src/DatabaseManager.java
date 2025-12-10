@@ -3,16 +3,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 class DatabaseManager {
-    private static final String DB_URL = "jdbc:sqlite:virtual_pet.db";
+    private static final String DB_URL = "jdbc:sqlite:virtual_pet.db"; //It tells the driver to use a file named virtual_pet.db in the current directory.
     private Connection connection;
 
     public DatabaseManager() {
-        initializeDatabase();
+        initializeDatabase(); //Calls the private method to set up the connection and ensure the tables exist.
     }
     private void initializeDatabase() {
         try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection(DB_URL);
+            Class.forName("org.sqlite.JDBC"); //Loads the JDBC driver for SQLite
+            connection = DriverManager.getConnection(DB_URL); //Establishes the database connection. This creates the virtual_pet.db file if it doesn't exist and opens a connection to it
             createTables();
             System.out.println("✅ Database initialized successfully!");
         } catch (ClassNotFoundException | SQLException e) {
@@ -62,21 +62,21 @@ class DatabaseManager {
             )
         """;
 
-        try (Statement stmt = connection.createStatement()) {
-            stmt.execute(createPetsTable);
+        try (Statement stmt = connection.createStatement()) {//A Statement is used for general SQL execution.
+            stmt.execute(createPetsTable); //Executes the SQL commands to create the three tables.
             stmt.execute(createGameHistoryTable);
             stmt.execute(createStatsTable);
         } catch (SQLException e) {
             System.err.println("❌ Error creating tables: " + e.getMessage());
         }
     }
-
+    //Method accepts an IPet object and returns the new pet's generated database ID.
     public int savePet(IPet pet) {
         String sql = """
             INSERT INTO pets (name, type, health, max_health, energy, hunger, happiness, state, decorators)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """;
-
+       //Using PreparedStatement to safely insert data
         try (PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, pet.getName());
             pstmt.setString(2, pet.getType());
