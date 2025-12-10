@@ -81,7 +81,8 @@ class GameEngine {
         String name = scanner.nextLine();
         builder.setName(name.isEmpty() ? "Buddy" : name);
 
-        currentPet = builder.build();
+
+        currentPet=builder.build();
         System.out.println("\n✅ " + currentPet.getType() + " " + currentPet.getName() + " has been created!");
 
         dbManager.savePet(currentPet);

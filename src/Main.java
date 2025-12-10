@@ -5,4 +5,4 @@ public class Main {
     }
 }
 //✅ Single Responsibility - Main only starts the application
-//✅ Dependency Inversion - Depends on GameEngine abstraction1
+//✅ Dependency Inversion - Depends on GameEngin3 abstraction1
