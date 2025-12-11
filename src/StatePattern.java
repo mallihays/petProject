@@ -126,6 +126,6 @@ class DeadState implements IPetState {
         System.out.println("💀 " + pet.getName() + " has passed away...");
     }
     public void handleTick(IPet pet) {
-        // Dead pets don't tick
+
     }
 }
