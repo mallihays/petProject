@@ -13,17 +13,14 @@ class PetBuilder {
         this.name = name;
         return this;
     }
-
     public PetBuilder setType(String type) {
         this.type = type.toLowerCase();
         return this;
     }
-
     public PetBuilder setHealth(int health) {
         this.health = health;
         return this;
     }
-
     public PetBuilder setEnergy(int energy) {
         this.energy = energy;
         return this;
